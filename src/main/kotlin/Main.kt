@@ -1,24 +1,18 @@
 fun main() {
-    println("Please enter the shop name:")
-    val shopName = readlnOrNull()
+    val shopName = readLnWithMessage("Please enter the shop name:")
 
-    println("Registering shop products:")
-    val products = populateProductList()
+    val productRepository = ProductRepository.getInstance()
+    val customer: Customer? = Customer.readCustomer()
 
-    populateProductList()
+    if (customer === null) return
+
+    val shoppingCart = ShoppingCart(customer, productRepository = productRepository)
+    shoppingCart.populateShoppingCart()
+    shoppingCart.checkOut()
 }
 
-private fun populateProductList(): MutableList<Product> {
-    val products = mutableListOf<Product>()
-    var continueReadingProducts: String? = "Y"
-
-    while (continueReadingProducts?.uppercase()?.trim() != "N") {
-        println("Reading product at index: [${products.size}]")
-        val product = Product.readFromKeyboard()
-        products.add(product)
-        println("Do you want to register another product? [Enter for yes, \"N\" to stop]")
-        continueReadingProducts = readlnOrNull()
-    }
-    return products
+fun readLnWithMessage(message: String): String {
+    println(message)
+    return readln()
 }
 
