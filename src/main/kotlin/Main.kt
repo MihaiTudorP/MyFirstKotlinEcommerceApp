@@ -16,3 +16,15 @@ fun readLnWithMessage(message: String): String {
     return readln()
 }
 
+// TODO: Menu
+// - change shop name
+// - create new product
+// - create new customer
+// - create new shopping cart
+// - modify product
+// - modify customer
+// - print product list
+// - print customer list
+// - print customer purchases list
+
+// - should have multiple customers and shopping carts
