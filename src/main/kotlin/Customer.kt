@@ -1,12 +1,10 @@
-import jdk.internal.joptsimple.internal.Strings.isNullOrEmpty
-
 data class Customer(val firstName: String, var lastName: String) {
     init {
-        if (isNullOrEmpty(firstName) || !Regex("[A-Za-z-]+$").matches(firstName)){
+        if (firstName.isEmpty() || !Regex("[A-Za-z-]+$").matches(firstName)){
             throw IllegalArgumentException("Invalid first name!")
         }
 
-        if (isNullOrEmpty(lastName) || !Regex("[A-Za-z-]+$").matches(lastName)){
+        if (lastName.isEmpty() || !Regex("[A-Za-z-]+$").matches(lastName)){
             throw IllegalArgumentException("Invalid first name!")
         }
     }

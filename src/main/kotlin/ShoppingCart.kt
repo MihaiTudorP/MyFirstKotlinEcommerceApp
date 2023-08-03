@@ -14,7 +14,6 @@ data class ShoppingCart(
                 Total for this item: ${item.getTotal()}
             """.trimIndent()
             )
-            total += item.getTotal()
             productRepository.updateStock(item.product, item.amount)
         }
 
@@ -54,12 +53,13 @@ data class ShoppingCart(
                 }
             }
 
-
             if (item != null) {
                 item.amount += itemAmount
             } else {
                 itemList.add(ShoppingCartItem(product, itemAmount))
             }
+
+            total += itemAmount * product.price
 
             println("Would you like to continue shopping? [enter \"N\" for no or any key to continue]")
             continueShopping = readln().trim()
