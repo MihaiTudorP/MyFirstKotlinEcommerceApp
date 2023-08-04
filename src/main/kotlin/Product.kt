@@ -19,4 +19,17 @@ data class Product(val name: String, val price: Double = 0.0, var stock: Int = 0
             return Product(productName, productPrice, stock)
         }
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Product
+
+        return name == other.name
+    }
+
+    override fun hashCode(): Int {
+        return name.hashCode()
+    }
 }

@@ -1,6 +1,6 @@
 data class Customer(val firstName: String, var lastName: String) {
     init {
-        val customerNameRegex = Regex("[A-Za-z-]+$")
+        val customerNameRegex = Regex("[A-Za-z\\-]+$")
         if (firstName.isEmpty() || !customerNameRegex.matches(firstName)){
             throw IllegalArgumentException("Invalid first name!")
         }
